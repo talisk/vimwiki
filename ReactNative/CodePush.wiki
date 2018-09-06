@@ -1,0 +1,135 @@
+= CodePush =
+
+== 安装 ==
+
+{{{ class="brush:bash"
+npm install -g code-push-cli
+}}}
+
+== 注册 ==
+
+{{{ class="brush:bash"
+code-push register
+}}}
+
+弹出一个网页，使用MS/GitHub帐号登录，返回一个AccessKey，记下来粘贴到Bash中
+
+== 添加应用 ==
+
+{{{ class="brush:bash"
+code-push app add ReactNews
+}}}
+
+返回两个部署，分别为Production和Staging，由于网络不好，可以把DeploymentKey记下来
+
+== 项目设置 ==
+
+{{{ class="brush:bash"
+npm install react-native-code-push@latest --save
+}}}
+
+老版本的RN可以执行
+
+{{{ class="brush:bash"
+rnpm link react-native-code-push
+}}}
+
+新版本RN可以直接用react-native的命令
+
+{{{ class="brush:bash"
+react-native link react-native-code-push
+}}}
+
+系统会问你为Android设置的DeploymentKey
+
+iOS的需要手动配置，在Info.plist文件中添加CodePushDeploymentKey键
+
+== 代码配置 ==
+
+iOS项目中AppDelegate：
+
+{{{ class="brush:objc"
+import "CodePush.h"
+}}}
+
+然后修改代码：
+
+{{{ class="brush:objc"
+#ifdef DEBUG
+  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
+#else
+  jsCodeLocation = [CodePush bundleURL];
+}}}
+
+在index.ios.js的componentDidMount中写入：
+
+{{{ class="brush:bash"
+import codePush from "react-native-code-push";
+}}}
+
+然后两种方式启动：
+
+{{{ class="brush:bash"
+componentDidMount() {
+  codePush.sync();
+}
+}}}
+
+或者在根组件外，写：
+
+{{{ class="brush:bash"
+class MyApp extends Component {
+  ......
+}
+......
+MyApp = codePush(MyApp);
+}}}
+
+== 打包 ==
+
+{{{ class="brush:bash"
+react-native bundle --platform ios --entry-file index.ios.js --bundle-output ./release/main.jsbundle --assets-dest ./release --dev false
+}}}
+
+iOS平台 index.ios.js入口文件 包输出目录 assets输出位置 非dev模式
+
+* --platform 平台名
+* --entry-file 入口文件
+* --bundle-output jsbundle输出目录
+* --assets-dest assets存放位置
+* --dev 是否dev模式
+
+== 发布包 ==
+
+=== 通用命令 ===
+
+{{{ class="brush:bash"
+code-push release ReactNews folderName 1.0 [-d Staging/Production]
+}}}
+
+* ReactNews 应用名
+* folderName 打包内容文件夹
+* 1.0 对应Target的版本号
+* -d Staging/Production 对应部署，默认Staging
+
+=== RN专用命令 === 
+
+{{{ class="brush:bash"
+code-push release-react ReactNews ios
+}}}
+
+RN专用发布命令，自动打包，自动匹配target的version，默认发布到Staging部署
+
+* ReactNews 应用名
+* ios 平台名
+
+== 查看 ==
+
+{{{ class="brush:bash"
+code-push deployment ls ReactNews [-k]
+}}}
+
+查看已发布的包，-k参数可选，默认不显示DeploymentKey
+
+* ReactNews 应用名
+* -k 显示DeploymentKey，默认不显示

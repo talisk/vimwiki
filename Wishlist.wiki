@@ -1,0 +1,29 @@
+= 愿望清单 =
+
+* [ ] 数码
+  * [X] Kindle Paper White 2
+  * [X] JBL Reflct BT mini
+  * [ ] Logitech Ultrathin Touch Mouse T631
+  * [ ] HHKB Pro 2
+  * [ ] 27 inch Display
+  * [ ] Synology DS216play
+  * [ ] PlayStation 4
+
+* [ ] 应用
+  * [ ] Clear
+  * [ ] Workflow
+  * [ ] ProCam 4
+  * [ ] Prompt 2
+
+* [ ] 美食
+  * [ ] 武汉 今晚打老虎
+  * [ ] 天津 米有沙拉
+  * [ ] 天津 海中鲜
+  * [ ] 天津 望津居酒屋
+  * [ ] 北京 沣元春饼馆
+  * [ ] 北京 老爆肚满
+  * [ ] 北京 祥云轩
+  * [ ] 北京 聚宝源
+ 
+* [ ] 玩具
+  * [ ] LAMY Safari

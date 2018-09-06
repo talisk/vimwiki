@@ -1,0 +1,21 @@
+= AppDelegate打包设置 =
+
+{{{ class="brush:objc"  
+
+#ifdef DEBUG
+  #if TARGET_IPHONE_SIMULATOR
+    jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
+  #else
+    jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+  #endif
+#else
+  jsCodeLocation = [CodePush bundleURL];
+#endif
+
+}}}
+
+* 判断scheme是否为debug
+  * 是debug，则判断是否是模拟器
+    * 是模拟器，则设置为locolhost:8081
+    * 不是模拟器，则设置为本机打包
+  * 不是debug，则设置CodePush服务

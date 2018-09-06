@@ -1,0 +1,7 @@
+= Vimwiki记录 =
+
+| 命令                | 描述             |
+| Backspace           | 返回上一层       |
+| \ww                 | 主页             |
+| :VimwikiAll2HTML    | 所有页面生成HTML |
+| :Vimwiki2HTML       | 当前页面生成HTML |

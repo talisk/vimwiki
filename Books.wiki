@@ -1,0 +1,71 @@
+= 书单 =
+
+* 技术
+  * iOS开发
+    * iOS开发进阶
+    * Objective-C编程全解
+    * iOS核心开发手册
+    * iOS Auto Layout开发秘籍
+    * iOS网络编程与云端应用最佳实践
+    * 编写高质量代码 改善Objective-C程序的61个建议
+    * Effective Objective-C 2.0 编写高质量iOS与OS X代码的52个有效方法
+    * Objective-C编程之道 iOS设计模式解析
+    * 精通Objective-C
+    * iOS网络高级编程
+    * iOS高级编程
+    * The Swift Programming Language
+    * Using Swift with Cocoa and Objective-C
+    * Swifter - 100个Swift必备tips
+    *
+  * C++
+    * C++ Primer
+    * 像计算机科学家一样思考C++
+  * JavaScript
+    * JavaScript权威指南
+    * JavaScript高级程序设计
+    * JavaScript语言精粹
+    * JavaScript设计模式
+    * 高性能JavaScript
+    * Effective JavaScript 编写高质量JavaScript代码的68个有效方法 
+  * Cocos
+    * Cocos2d-JS开发之旅：从HTML5到原生
+    * Cocos2d-x实战JS卷
+
+* 职业生涯
+  * 浪潮之巅
+  * 黑客与画家：硅谷创业致富Paul Graham文集
+  * 史蒂夫·乔布斯传
+  * 程序员面试金典 第5版
+  * 创业的智慧：世界顶级创业导师的洞见
+  * 逆袭大学：传给IT学子的正能量
+  * 软件故事：谁发明了那些经典的编程语言
+  * 编程人生：15位软件先驱访谈录
+  * MacTalk人生元编程
+  * 啊哈！算法
+  * 算法导论
+  * 图解HTTP
+  * 算法 Algorithms
+  * 编程珠玑
+  * 编程之美
+  * Head First设计模式
+  * 重构 改善既有代码的设计
+  * 修改代码的艺术
+  * 人月神话
+  * 代码整洁之道
+  * 高效能程序员的修炼
+  * 程序员的自我修养——链接、装载与库
+
+* 产品
+  * 写给大家看的设计书
+  * 通用设计法则
+  * 人人都是产品经理
+  * 缔造企鹅：产品经理是这样炼成的
+  * 体验∙度：简单可依赖的用户体验
+  * 产品经理的20堂必修课
+  * 神一样的产品经理：基于移动与互联网产品实践
+  * 免费游戏盈利之道
+  * 进化-我们在互联网上奋斗的故事
+  * 破茧成蝶：用户体验设计师的成长之路
+  * 结网@改变世界的互联网产品经理 修订版
+  * 简约至上 交互式设计的四策略
+  * App这样设计才好卖

@@ -1,0 +1,116 @@
+= SVN常用命令使用 =
+
+[[http://quenywell.com/most-used-svn-commands/|原文地址]]
+
+Subversion(简称SVN)是一个流行的版本控制系统，它采用服务器/客户端(C/S)架构，将资料存放在SVN服务器，然后通过SVN客户端对服务器的资料进行操作。典型的操作过程是通过SVN客户端从服务器下载(Check Out)一个副本到本地(这个本地副本也称为工作副本)，然后对工作副本进行操作，之后再将修改过的内容上传(Commit)到服务器。
+本文将向大家介绍一些常用SVN命令的使用方法。如果希望了解更多有关SVN服务器设置的内容，请阅读科威网的另一篇文章《SVN服务器设置指南》。
+
+1. SVN Checkout — 获取工作副本
+svn checkou命令可用于获取整个项目、Trunk或者某本个目录、文件。
+语法：
+
+$ svn checkout/co URL PATH
+以下例子将演示怎样把Quenywell项目的branches目录下载到本地指定目录：
+
+$ svn co https://quenywell.com/var/svn/quenywell /home/user/workspace/
+A    uniquesoft/trunk
+A    uniquesoft/branches
+A    uniquesoft/tags
+Checked out revision 1.
+$ ls -a /home/user/workspace/quenywell
+.  ..  branches  .svn  tags  trunk
+svn checkout命令会自动创建一个包含SVN仓库信息的隐藏文件夹.svn。
+
+2. SVN Commit — 提交工作副本
+svn commit命令用于把对本地工作副本做出的改动提交到SVN服务器上。
+语法：
+
+$ svn commit -m "$MESSAGES"
+参数-m用来添加备注。实际使用中请将$MESSAGES替换为你自己的备注信息。
+例如更新了branches/v0.1/releasenotes的内容，需要将更改提交到服务器上，那么可以：
+
+$ svn commit -m "Upate release notes"
+Sending branches/v0.1/releasenotes
+Transmitting file data .
+Committed revision 3.
+3. SVN Add — 添加文件或目录
+假设需要在braches/v0.1目录下增加一个名叫package的目录：
+
+在本地目录创建package
+$ mkdir -p branches/v0.1/package
+把package目录增加到本地SVN工作副本
+$ svn add package
+A    branches/v0.1/package
+提交更新内容到服务器
+$ svn commit -m "Adding package directory" branches/package
+Adding         branches/v0.1/package
+4. SVN Delete — 删除文件或目录
+假设需要将branches/v0.1目录下的package文件夹删除：
+
+删除package目录
+$ svn delete branches/v0.1/package
+D         branches/package
+把更新提交到服务器
+svn commit -m "Removing package directory from braches"
+Deleting       branches/package
+使用SVN Commit命令的时候，文件目录branches/v0.1下的package目录会被自动删除。
+
+5. SVN List — 列出SVN仓库内容
+如果你只想查看SVN仓库的内容，不希望下载到本地，可以使用svn list命令。
+
+$ svn list -v https://quenywell.com/var/svn/quenywell/branches/v0.1/
+6 quenywell    Sep 16 17:18 ./
+6 quenywell    Sep 16 17:18 package/
+3 quenywell 24 Sep 16 16:06 releasenotes
+svn list命令增加-v参数之后将显示以下内容：
+
+版本号
+最后提交更新的用户
+文件大小
+最后更新的日期和时间
+6. SVN Move — 改名或者移动文件和文件夹
+svn move命令用来给文件和文件夹改名，或者将文件和文件夹从一个位置移动到另一个位置。
+例如要将releasenotes文件改名为quenywell:
+
+本地更名
+$ svn move releasenotes quenywell
+A         quenywell
+D         releasenotes
+将更新提高到服务器
+$ svn commit -m "Renaming releasenotes to quenywell" quenywell
+Adding         quenywell
+Committed revision 7.
+7. SVN Update — 更新本地工作副本
+svn update命令用于将服务器更新应用到本地。有人已经更新了项目代码，或者添加了文件，你需要将更新同步到本地，则可以使用这条命令。
+例如有人在v0.1目录下增加了Readme文件，你需要更新本地工作副本：
+
+$ svn update
+A         Readme
+Updated to revision 8.
+8. SVN Status 查看工作副本状态
+svn status命令用于查看本地工作副本的状态，显示工作副本是否被修改、增加或者删除。
+
+A       v0.1/test
+M       v0.1/quenywell
+D       v0.1/releasenotes
+“A”标记指的是增加，”M”标记指的是已被修改，”D”标志指的是被删除。
+
+9. SVN Log — 查看更改记录
+svn log命令可以用于查看某个文件或者目录的更改记录。
+例如查看quenywell文件的更改记录：
+
+$ svn log quenywell
+------------------------------------------------------------------------
+r7 | quenywell | 2013-09-16 17:41:22 +0800 (Mon, 16 Sep 2013) | 1 line
+
+Renaming releasenotes to quenywell
+------------------------------------------------------------------------
+r3 | quenywell | 2013-09-16 16:06:31 +0800 (Mon, 16 Sep 2013) | 1 line
+
+Update release notes
+------------------------------------------------------------------------
+r2 | quenywell | 2013-09-16 16:05:53 +0800 (Mon, 16 Sep 2013) | 1 line
+
+Add release notes
+------------------------------------------------------------------------
+（完）

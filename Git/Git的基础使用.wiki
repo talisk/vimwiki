@@ -1,0 +1,117 @@
+= Git的基础使用 =
+
+== 安装 ==
+
+=== Linux ===
+
+==== Yum方式 ====
+
+`$ yum install git-core`
+
+==== apt-get方式====
+
+`$ apt-get install git`
+
+=== macOS ===
+
+macOS本身自带Git，也可以自行安装
+
+==== pkg安装 ====
+
+`http://sourceforge.net/projects/git-osx-installer/`
+
+==== MacPorts ====
+
+`$ sudo port install git-core +svn +doc +bash_completion +gitweb +svn`
+
+==== homebrew ====
+
+`brew install git`
+
+=== Windows ===
+
+http://msysgit.github.com/
+
+== 基本操作 ==
+
+=== 初始化 ===
+
+在某个工作目录中初始化一个新的仓库
+
+`git init`
+
+=== 添加文件 ===
+
+新的仓库默认没有追踪任何文件改变，通过添加文件，使Git来追踪文件
+
+`git add fileName.c`
+
+`git add folder`
+
+`git add README`
+
+`git add *.cpp`
+
+`git add --all`
+
+=== 提交文件 ===
+
+Git已经追踪的文件需要被提交到仓库中
+
+`git commit`
+
+`git commit -m "This is a commit message"`
+
+=== 远程仓库 ===
+
+==== 查看远程仓库 ====
+
+`git remote`
+
+`git remote -v`
+
+==== 关联远程仓库 ====
+
+`git remote add name url` → `git remote add origin https://github.com/talisk/SKLogger.git`
+
+==== 移除远程仓库 ====
+
+`git remote remove name` → `git remote remove origin`
+
+==== 远程仓库更名 ====
+
+`git remote rename oldName newName`
+
+== 推送 ==
+
+命令原型：`git push remoteName branchName`
+
+对于多远程仓库第一次推送，或修改默认默认远程仓库，加-u参数
+
+`git push -u origin master`
+
+单远程仓库，或非第一次推送，直接执行
+
+`git push`
+
+== 拉取 ==
+
+`git fetch`
+
+== 拉取并合并 ==
+
+`git pull remoteName branchName`
+
+== 分支 ==
+
+`git branch`
+
+`git branch -v`
+
+`git branch -a`
+
+== 合并 ==
+
+`git merge`
+
+== 标签 ==
